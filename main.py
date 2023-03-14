@@ -1,9 +1,10 @@
 from flask import Flask
 from flask_restful import Api, Resource, reqparse
-import random
+import random, os
 
 app = Flask(__name__)
 api = Api(app)
+srvPort = os.environ.get('PORT', 5000)
 
 
 class Quote(Resource):
@@ -155,4 +156,4 @@ ai_quotes = [
 api.add_resource(Quote, "/ai-quotes", "/ai-quotes/", "/ai-quotes/<int:id>")
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=srvPort, debug=True)
