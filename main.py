@@ -4,6 +4,7 @@ import random, os
 
 app = Flask(__name__)
 api = Api(app)
+srvHost = "0.0.0.0"
 srvPort = os.environ.get('PORT', 5000)
 
 
@@ -156,4 +157,4 @@ ai_quotes = [
 api.add_resource(Quote, "/ai-quotes", "/ai-quotes/", "/ai-quotes/<int:id>")
 
 if __name__ == '__main__':
-    app.run(port=srvPort, debug=True)
+    app.run(host=srvHost, port=srvPort, debug=True)
